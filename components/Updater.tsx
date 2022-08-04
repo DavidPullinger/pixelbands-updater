@@ -10,8 +10,8 @@ export default function Updater() {
   const network = WalletAdapterNetwork.Mainnet;
   const wallet = useWallet();
   const connection = new Connection(clusterApiUrl(network));
-  //const metaplex = new Metaplex(connection);
-  //metaplex.use(walletAdapterIdentity(wallet));
+  const metaplex = new Metaplex(connection);
+  metaplex.use(walletAdapterIdentity(wallet));
   const [popUpVisible, setPopUpVisible] = useState(false);
   const [currentText, setCurrentText] = useState("");
 
@@ -19,7 +19,7 @@ export default function Updater() {
     toast.warning("Updating NFT...");
     e.preventDefault();
     // get metadata from form
-    /*const formData = new FormData(e.currentTarget);
+    const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries()) as any;
 
     const nft = await metaplex
@@ -56,7 +56,7 @@ export default function Updater() {
       }
     } else {
       toast.error("New update authority is invalid");
-    }*/
+    }
   }
 
   function isValid(address: string) {
