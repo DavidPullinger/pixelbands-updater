@@ -69,7 +69,7 @@ export default function Updater() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-6 w-2/3 relative">
+    <form onSubmit={onSubmit} className="flex flex-col gap-6 lg:w-2/3 relative">
       {popUpVisible ? (
         <PopUp currentText={currentText} setPopUpVisible={setPopUpVisible} />
       ) : null}
@@ -89,7 +89,10 @@ export default function Updater() {
             (?)
           </p>
         </div>
-        <input name="mint" className="w-full p-2 my-2 rounded-lg" />
+        <input
+          name="mint"
+          className="w-full p-2 my-2 rounded-lg bg-[#3b3b3b]"
+        />
       </div>
       <div>
         <div className="flex justify-between">
@@ -106,7 +109,10 @@ export default function Updater() {
             (?)
           </p>
         </div>
-        <input name="updateAuth" className="w-full p-2 my-2 rounded-lg" />
+        <input
+          name="updateAuth"
+          className="w-full p-2 my-2 rounded-lg bg-[#3b3b3b]"
+        />
       </div>
       <button
         className="border-white border rounded-lg w-4/5 p-2 mx-auto"
