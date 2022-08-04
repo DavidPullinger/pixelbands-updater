@@ -26,17 +26,18 @@ export default function Updater() {
       .nfts()
       .findByMint(new PublicKey(data["mint"]))
       .run();
-    const newCreators = nft.creators.map((creator) => {
-      if (creator.address.toString() === wallet.publicKey?.toString()) {
-        return {
-          address: new PublicKey(data["updateAuth"]),
-          verified: false,
-          share: creator.share,
-        };
-      } else return creator;
-    });
 
     if (isValid(data["updateAuth"])) {
+      const newCreators = nft.creators.map((creator) => {
+        if (creator.address.toString() === wallet.publicKey?.toString()) {
+          return {
+            address: new PublicKey(data["updateAuth"]),
+            verified: false,
+            share: creator.share,
+          };
+        } else return creator;
+      });
+
       try {
         const res = await metaplex
           .nfts()
