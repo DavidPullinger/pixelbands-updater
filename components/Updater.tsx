@@ -10,8 +10,8 @@ export default function Updater() {
   const network = WalletAdapterNetwork.Mainnet;
   const wallet = useWallet();
   const connection = new Connection(clusterApiUrl(network));
-  const metaplex = new Metaplex(connection);
-  metaplex.use(walletAdapterIdentity(wallet));
+  //const metaplex = new Metaplex(connection);
+  //metaplex.use(walletAdapterIdentity(wallet));
   const [popUpVisible, setPopUpVisible] = useState(false);
   const [currentText, setCurrentText] = useState("");
 
@@ -19,7 +19,7 @@ export default function Updater() {
     toast.warning("Updating NFT...");
     e.preventDefault();
     // get metadata from form
-    const formData = new FormData(e.currentTarget);
+    /*const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries()) as any;
 
     const nft = await metaplex
@@ -56,7 +56,7 @@ export default function Updater() {
       }
     } else {
       toast.error("New update authority is invalid");
-    }
+    }*/
   }
 
   function isValid(address: string) {
@@ -69,7 +69,7 @@ export default function Updater() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-6 lg:w-2/3 relative">
+    <form onSubmit={onSubmit} className="flex flex-col gap-6 md:w-2/3 relative">
       {popUpVisible ? (
         <PopUp currentText={currentText} setPopUpVisible={setPopUpVisible} />
       ) : null}
@@ -126,12 +126,12 @@ export default function Updater() {
 
 function PopUp(props: { setPopUpVisible: any; currentText: string }) {
   return (
-    <div className="absolute w-full h-full bg-black opacity-90 flex justify-center items-center rounded-lg p-10">
+    <div className="absolute w-full h-full bg-black opacity-90 flex justify-center items-center rounded-lg md:p-10">
       <XIcon
         onClick={() => props.setPopUpVisible(false)}
-        className="w-6 absolute top-4 right-4 cursor-pointer"
+        className="w-6 absolute top-4 right-0 cursor-pointer"
       />
-      <p className="max-w-[60ch]">{props.currentText}</p>
+      <p className="max-w-[60ch] pt-10">{props.currentText}</p>
     </div>
   );
 }
