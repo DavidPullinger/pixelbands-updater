@@ -56,7 +56,7 @@ export default function Updater() {
         toast.error("An error occurred. Please open a ticket in the Discord");
       }
     } else {
-      toast.error("New update authority is invalid");
+      toast.error("New update authority/creator is invalid");
     }
   }
 
@@ -70,11 +70,18 @@ export default function Updater() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col gap-6 md:w-2/3 relative">
+    <form
+      onSubmit={onSubmit}
+      className="flex flex-col gap-6 w-full md:w-2/3 relative"
+    >
       {popUpVisible ? (
         <PopUp currentText={currentText} setPopUpVisible={setPopUpVisible} />
       ) : null}
-      <h1 className="text-5xl font-bold">Auth Updater</h1>
+      <h1 className="text-3xl md:text-6xl font-bold">
+        Creator&Authority
+        <br />
+        Updater
+      </h1>
       <div>
         <div className="flex justify-between">
           <p>Mint Address</p>
@@ -97,7 +104,7 @@ export default function Updater() {
       </div>
       <div>
         <div className="flex justify-between">
-          <p>New Update Authority</p>
+          <p>New Update Authority/Creator</p>
           <p
             onClick={() => {
               setCurrentText(
